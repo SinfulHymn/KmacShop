@@ -40,7 +40,7 @@ Index/Home             |  Category/Filtered
 
 Product Show             |  ERD
 :-------------------------:|:-------------------------:
-![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/Y4mWTw2.png)
+![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/rJpsWhG.png)
 Cart             |  Checkout
 :-------------------------:|:-------------------------:
 
