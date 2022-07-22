@@ -32,6 +32,20 @@ Description            |  Screenshot
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+# KmacShop WireFrame and ERD
+
+Index/Home             |  Category/Filtered
+:-------------------------:|:-------------------------:
+![](https://i.imgur.com/I7mtFwB.png)  |  ![](https://i.imgur.com/4BJ71X9.png)
+
+Product Show             |  ERD
+:-------------------------:|:-------------------------:
+![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/Y4mWTw2.png)
+Cart             |  Checkout
+:-------------------------:|:-------------------------:
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 # Functionality
 
 - In this app we will access a database of products and display them on the index page
@@ -164,17 +178,7 @@ const userSchema = new Schema({
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-# KmacShop WireFrame and ERD
 
-Index/Home             |  Results/Filtered
-:-------------------------:|:-------------------------:
-![](https://i.imgur.com/CtaWKbU.png)  |  ![](https://i.imgur.com/0fxtC01.png)
-
-Show/Description             |  ERD
-:-------------------------:|:-------------------------:
-![](https://i.imgur.com/0At4nOQ.png)  |  ![](https://i.imgur.com/Y4mWTw2.png)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 # Resources/Links
 ```
