@@ -4,6 +4,7 @@ from unicodedata import category
 from venv import create
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 class Category(models.Model):
@@ -58,6 +59,9 @@ class Product(models.Model):
         verbose_name_plural = 'Products'
         ordering = ('-created',)
         index_together = [['id', 'slug']]
+    
+    def get_absolute_url(self):
+        return reverse('main_app:product_detail', args=[self.slug])
     
     def __str__(self):
         return self.title
