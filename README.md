@@ -38,7 +38,7 @@ Index/Home             |  Category/Filtered
 :-------------------------:|:-------------------------:
 ![](https://i.imgur.com/I7mtFwB.png)  |  ![](https://i.imgur.com/4BJ71X9.png)
 
-Product Show             |  ERD
+Product Show             |  Temporary ERD
 :-------------------------:|:-------------------------:
 ![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/rJpsWhG.png)
 Cart             |  Checkout
