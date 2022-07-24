@@ -2,21 +2,39 @@
 {% block title %} Home - {% endblock %}
     {% block content %}
     {% include 'partials/heading.html'%}
-    <div class="my-6 container mx-auto grow">
+    {% comment %} grow container with padding {% endcomment %}
+    <div class=" p-6 w-full md:container mx-auto grow">
+      {% comment %} title text {% endcomment %}
       <div>
-        <p class="text-3xl font-semibold">Best Sellers</p>
+        <p class="text-2xl font-semibold text-gray-600">Best Sellers</p>
       </div>
-    
-      <div class="my-6 grid grid-cols-4 gap-4">
-        <a class="p-6 bg-white" href="{{p.get_absolute_url}}">
-          <div >
-            <img class="pt-0" src="https://i.imgur.com/eOXOmIH.jpg" alt="">
-            <p>product: something here </p>
-            
-            <p>$9999.99</p>
-          </div>
 
-        </a>
+      <div class="my-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
+        
+        {% comment %} ~~~~CARD START~~~~ {% endcomment %}
+        <div class="p-2 md:p-4 lg:p-5 bg-white ">
+          {% comment %} container for the whole inner {% endcomment %}
+          <div class="product-container-inner">
+            {% comment %} container for the image margin bottom and min height{% endcomment %}
+              <div class="image-container mb-4 h-fit">
+                {% comment %} href for the product being the image {% endcomment %}
+                <a href="{{p.get_absolute_url}}">
+                  <img class="pt-0" src="https://i.imgur.com/eOXOmIH.jpg" alt="">
+                </a>
+              </div>
+            {% comment %} container for the product name and price {% endcomment %}
+            <div>
+              <a href="{{p.get_absolute_url}}" class="text-slate-600 font-normal font-sans    text-base xs:text-lg pt-0.5 mb-1">C³Equalz X TKC Tangerine Linear Switches
+              </a>
+              <div class="mt-2">
+                <span class="font-semibold font-sans text-xl text-gray-600">$9999.99</span>
+              </div>
+            </div>
+              
+            </div>
+        </div>
+        {% comment %} ~~~~CARD END~~~~ {% endcomment %}
+
         <a class=" p-6   bg-white" href="{{p.get_absolute_url}}">
           <div >
             <img src="https://i.imgur.com/eOXOmIH.jpg" alt="">
