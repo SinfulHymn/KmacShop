@@ -38,7 +38,7 @@ Index/Home             |  Category/Filtered
 :-------------------------:|:-------------------------:
 ![](https://i.imgur.com/I7mtFwB.png)  |  ![](https://i.imgur.com/4BJ71X9.png)
 
-Product Show             |  Temporary ERD
+Product Show             |   ERD still missing models
 :-------------------------:|:-------------------------:
 ![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/rJpsWhG.png)
 Cart             |  Checkout
@@ -53,19 +53,22 @@ Cart             |  Checkout
 - User will be able to sign up or log in
 - if user is logged in they can
 
-        - create a new race event 
-        - update race event data 
-        - delete race event data
-        - add reviews to race event data
-        - delete reviews to race event data
+        - can view products 
+        - add products to cart 
+        - maintain a session with their cart
+        - checkout items with their cart
+        - add reviews to products 
 
-- if user is logged in they can view a list of their reviewed race events
+
 
 # Routes
 
 ```
-
-
+path('', views.index, name='index'),
+path('about/', views.about, name='about'),
+path('products/<slug:slug>/', views.product_detail, name='product_detail'),
+path('category/<category:slug>/', views.category_index, name='category_index')
+path('account/signup/', views.signup, name='signup')
 ```
 
 # Models/Schema
@@ -75,46 +78,13 @@ Cart             |  Checkout
 Event/Review Schema:
 
 ```
-const reviewSchema = new Schema({
-    review: String,
-    rating: Number,
-    reviewedBy:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
-},{
-    timestamps: true
-})
 
-//schema
-const eventsSchema = new Schema({
-    name: {type: String, unique:true, required: true},
-    description: {type: String, required: true},
-    location: {type: String, required: true},
-    date: {type: String, required: true},
-    image: {type: String, required: true},
-    source: {type: String, required: true},
-    signup: {type: String, required: true},
-    price: {type: String, required: true},
-    latlng: [],
-    tags:[],
-    reviews: [reviewSchema]
-})
 ```
 
 User Schema:
 
 ```
-const userSchema = new Schema({
-    name: String,
-    email: String,
-    avatarURL: String,
-    googleId: String,
-    reviewedEvents: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Event'
-    }]
-});
+
 ```
 
 # Current State

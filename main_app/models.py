@@ -20,9 +20,11 @@ class Category(models.Model):
         # sets the name of the table in the database to 'categories'
         verbose_name_plural = 'categories'
     
-    # def get_absolute_url(self):
-        # return reverse('shop:product_list_by_category', args=[self.slug])
-           
+    def get_absolute_url(self):
+        return reverse("main_app:product_detail", args=[self.slug])
+    
+    
+    
     def __str__(self):
         return self.name
     
