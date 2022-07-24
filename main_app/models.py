@@ -80,7 +80,9 @@ class ProductImage(models.Model):
     #   on_delete=models.CASCADE means that if the product is deleted, the photo will be deleted
     #   related_name='photos' means that the photos will be linked to the product
     product = models.ForeignKey(Product, related_name='photos', on_delete=models.CASCADE)
-    url = models.CharField(max_length=255)
+    url = models.FileField(upload_to='media/')
+    
+    
     
     def __str__(self):
         return f"image for product {self.product.title} - {self.url}"

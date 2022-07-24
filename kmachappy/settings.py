@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+env = environ.Env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,7 +73,6 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
                 # for every page, add the categories to the context
                 'main_app.views.categories',
             ],
@@ -140,3 +143,9 @@ INTERNAL_IPS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+AWS_S3_SESSION_PROFILE = 'ecommerce'
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'ecommerce-keys-u32'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
