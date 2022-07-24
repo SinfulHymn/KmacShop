@@ -944,6 +944,10 @@ select {
   height: fit-content;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-1\/5 {
   width: 20%;
 }
