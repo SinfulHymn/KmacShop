@@ -5,6 +5,11 @@ from venv import create
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'ecommerce-keys-u32'
 
 # Create your models here.
 class Category(models.Model):
@@ -41,7 +46,7 @@ class Product(models.Model):
     # description of the product
     description = models.TextField(blank=True)
     
-    image = models.ImageField(upload_to='images/', blank=True)
+    image = models.ImageField(upload_to='banana/', blank=True)
     # slug is used to create a URL for the product
     slug = models.SlugField(max_length=255)
     # price of the product
@@ -66,10 +71,10 @@ class Product(models.Model):
         return reverse('main_app:product_detail', args=[self.slug])
     
     def __str__(self):
-        return self.title
+        return self.name
     
 # photos for the product
-class Photo(models.Model):
+class ProductImage(models.Model):
     # many photos can belong to one product
     # build a link between the product and the photo
     #   on_delete=models.CASCADE means that if the product is deleted, the photo will be deleted

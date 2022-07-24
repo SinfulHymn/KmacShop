@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product, ProductImage
 
 # Register your models here.
 # @admin is used to register the models vs admin.site.register(Category)
@@ -23,3 +23,5 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['price', 'in_stock']
     # prepopulated_fields is used to automatically fill in the slug field
     prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(ProductImage)

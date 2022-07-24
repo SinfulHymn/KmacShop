@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Home - {% endblock %}
     {% block content %}
-    {% include 'partials/heading.html'%}
+ 
     {% comment %} grow container with padding {% endcomment %}
     <div class=" p-6 w-full md:container mx-auto grow">
       {% comment %} title text {% endcomment %}
@@ -19,7 +19,7 @@
               <div class="image-container mb-4 w-full relative">
                 {% comment %} href for the product being the image {% endcomment %}
                 <a class="block" href="{{p.get_absolute_url}}">
-                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.image }}" alt="{{p.image}}"> 
+                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.image }}" alt="{{p.image}}">
                 </a>
               </div>
             {% comment %} container for the product name and price {% endcomment %}
