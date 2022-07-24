@@ -26,9 +26,7 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
     
     def get_absolute_url(self):
-        return reverse("main_app:product_detail", args=[self.slug])
-    
-    
+        return reverse("main_app:catergory_index", args=[self.slug])
     
     def __str__(self):
         return self.name
@@ -70,8 +68,13 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('main_app:product_detail', args=[self.slug])
     
+    def get_image_url(self):
+        if self.image:
+            return f"{S3_BASE_URL}{BUCKET}/{self.image}"
+        return None
+    
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.category}"
     
 # photos for the product
 class ProductImage(models.Model):
