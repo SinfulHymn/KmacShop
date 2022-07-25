@@ -11,6 +11,11 @@ import boto3
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'ecommerce-keys-u32'
 
+class ProductManager(models.Manager):
+    def get_queryset(self):
+        return super(ProductManager,self).get_queryset().filter(is_active=True)
+
+
 # Create your models here.
 class Category(models.Model):
     # name of the category
@@ -39,28 +44,20 @@ class Product(models.Model):
     # build a link between the category and the product
     # on_delete=models.CASCADE means that if the category is deleted, the product will be deleted
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
-    #  records who created the product
     created_by = models.ForeignKey(User, related_name='product_creator', on_delete=models.CASCADE)
-    #  name of the product
     name = models.CharField(max_length=255, db_index=True)
-    # description of the product
     description = models.TextField(blank=True)
-    
     image = models.ImageField(upload_to='images/', blank=True)
-    # slug is used to create a URL for the product
     slug = models.SlugField(max_length=255)
-    # price of the product
     price = models.DecimalField(max_digits=10, decimal_places=2)
     # stock of the product
     # stock = models.PositiveIntegerField()
-    # in_stock is a property that checks if the product is in stock
     in_stock = models.BooleanField(default=True)
-    # is_active is a property that checks if the product is active
     is_active = models.BooleanField(default=True)
-    # created_at is a property that returns the date the product was created
     created = models.DateTimeField(auto_now_add=True)
-    # updated is a property that returns the date the product was updated
     updated = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+    products = ProductManager()
     
     class Meta:
         verbose_name_plural = 'Products'

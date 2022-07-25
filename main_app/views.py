@@ -5,7 +5,7 @@ from .models import Category, Product
 
 
 def index(request):
-    products = Product.objects.filter(is_active=True)
+    products = Product.products.all()
     return render(request, 'index.html', {'products': products})
 
 def product_detail(request, slug):

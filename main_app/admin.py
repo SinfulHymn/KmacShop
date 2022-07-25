@@ -16,11 +16,11 @@ class CategoryAdmin(admin.ModelAdmin):
 # class defines the admin interface for the Product model
 class ProductAdmin(admin.ModelAdmin):
     #  list_display is used to display the fields in the admin interface
-    list_display = ['name', 'description', 'slug', 'price', 'in_stock', 'created', 'updated']
+    list_display = ['name', 'description', 'price', 'in_stock', 'is_active', 'slug', 'created', 'updated']
     # filter is used to filter the products by category in the admin interface django-filter
     list_filter = ['in_stock', 'is_active']
     # editable is used to make the fields editable in the admin interface
-    list_editable = ['price', 'in_stock']
+    list_editable = ['price', 'in_stock', 'is_active']
     # prepopulated_fields is used to automatically fill in the slug field
     prepopulated_fields = {'slug': ('name',)}
 
