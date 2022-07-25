@@ -70,7 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # for every page, add the categories to the context
-                'main_app.views.categories',
+                'main_app.context_processors.categories',
             ],
         },
     },

@@ -6,7 +6,7 @@
     <div class=" p-6 w-full md:container mx-auto grow">
       {% comment %} title text {% endcomment %}
       <div>
-        <p class="text-2xl font-semibold text-gray-600">{{category}}</p>
+        <p class="text-2xl font-semibold text-gray-600">{{category | title}}</p>
       </div>
       {% comment %} Grid start {% endcomment %}
       <div class="my-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
@@ -18,13 +18,13 @@
             {% comment %} container for the image margin bottom and min height{% endcomment %}
               <div class="image-container mb-4 w-full relative">
                 {% comment %} href for the product being the image {% endcomment %}
-                <a class="block" href="{{p.get_absolute_url}}">
-                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.image }}" alt="{{p.image}}">
+                <a class="block" href="{{p.get_product_url}}">
+                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.productimage_set.all.1.url }}" alt="{{p.image}}">
                 </a>
               </div>
             {% comment %} container for the product name and price {% endcomment %}
             <div class="flex flex-col justify-between">
-              <a href="{{p.get_absolute_url}}" class="block text-slate-600 font-normal font-sans    text-base xs:text-lg pt-0.5 mb-1">{{p.name}}</a>
+              <a href="{{p.get_product_url}}" class="block text-slate-600 font-normal font-sans    text-base xs:text-lg pt-0.5 mb-1">{{p.name}}</a>
               </a>
               <div class="mt-2">
                 <span class="font-semibold font-sans text-xl text-gray-600">${{p.price}}</span>
@@ -33,6 +33,7 @@
               
             </div>
           </div>
+          
           {% comment %} ~~~~CARD END~~~~ {% endcomment %}
         {% endfor %}
       </div>

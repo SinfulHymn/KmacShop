@@ -28,6 +28,8 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse("main_app:catergory_index", args=[self.slug])
     
+    
+    
     def __str__(self):
         return self.name
     
@@ -67,6 +69,10 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return reverse('main_app:product_detail', args=[self.slug])
+    
+    def get_product_url(self):
+        return reverse('main_app:category_products', args=[self.category.slug, self.slug])
+    
     
     def get_image_url(self):
         if self.image:
