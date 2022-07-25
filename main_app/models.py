@@ -44,7 +44,7 @@ class Product(models.Model):
     # description of the product
     description = models.TextField(blank=True)
     
-    image = models.ImageField(upload_to='banana/', blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
     # slug is used to create a URL for the product
     slug = models.SlugField(max_length=255)
     # price of the product
@@ -82,10 +82,8 @@ class ProductImage(models.Model):
     # build a link between the product and the photo
     #   on_delete=models.CASCADE means that if the product is deleted, the photo will be deleted
     #   related_name='photos' means that the photos will be linked to the product
-    product = models.ForeignKey(Product, related_name='photos', on_delete=models.CASCADE)
-    url = models.FileField(upload_to='media/')
-    
-    
+    url = models.ImageField(upload_to='images/', blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"image for product {self.product.title} - {self.url}"
+        return f"image for product {self.product.name} - {self.url}"

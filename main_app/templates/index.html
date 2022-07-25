@@ -19,9 +19,10 @@
               <div class="image-container mb-4 w-full relative">
                 {% comment %} href for the product being the image {% endcomment %}
                 <a class="block" href="{{p.get_absolute_url}}">
-                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.image }}" alt="{{p.image}}"> 
+                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.productimage_set.all.2.url }}" alt="{{p.image}}"> 
                 </a>
               </div>
+              
             {% comment %} container for the product name and price {% endcomment %}
             <div class="flex flex-col justify-between">
               <a href="{{p.get_absolute_url}}" class="block text-slate-600 font-normal font-sans    text-base xs:text-lg pt-0.5 mb-1">{{p.name}}</a>
