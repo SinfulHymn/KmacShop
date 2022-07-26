@@ -28,7 +28,7 @@
 
 Description            |  Screenshot
 :---:|:----:
-| <p align="left">- A Django ecommerce web application that displays a directory keyboard related products. <br><br> - Users will be able to explore Keyboard products and view all their details about the Product! <br> - Users can leave a reviews on Products they have purchased. <br>- Users are able to browse and filter products by their categories <br> - Users are able to add products to their cart and maintain session with their cart <br> - Users are able to </p> | ![](https://i.imgur.com/AzWJqtF.jpg) |
+| <p align="left">- A Django ecommerce web application that displays a directory keyboard related products. <br><br> - Users will be able to explore Keyboard products and view all their details about the Product! <br> - Users can leave a reviews on Products they have purchased. <br>- Users are able to browse and filter products by their categories <br> - Users are able to add products to their cart and maintain session with their cart <br> - Users are able to </p> | ![](https://i.imgur.com/bGD2s2z.jpg) |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
