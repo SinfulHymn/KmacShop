@@ -1069,6 +1069,10 @@ select {
   height: 75%;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1115,6 +1119,10 @@ select {
 
 .w-14 {
   width: 3.5rem;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .max-w-screen-2xl {
@@ -1723,6 +1731,11 @@ select {
 .text-blue-300 {
   --tw-text-opacity: 1;
   color: rgb(147 197 253 / var(--tw-text-opacity));
+}
+
+.text-slate-800 {
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
 .underline {

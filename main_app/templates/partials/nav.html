@@ -26,9 +26,16 @@
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
         >Sign Up</a
       >
+      <a href="#">
+        <button class="py-2 px-3 mr-0 relative border-0 border-x-red-500 dark:text-slate-400 text-slate-600 dark:hover:bg-gray-700 rounded-xl hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
+          <svg class="h-8 w-8 " stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"  viewBox="1 0 24 24">
+            <path d="M12.5 11a4 4 0 1 1 4-4A4 4 0 0 1 12.5 11zm0-7a3 3 0 1 0 3 3A3 3 0 0 0 12.5 4zM22 22H21v-.5a8.5 8.5 0 0 0-17 0V22H3v-.5a9.5 9.5 0 0 1 19 0z"/>
+          </svg>
+        </button>
+      </a>
       <a href="{% url "main_app_cart:cart_summary"  %}">
-        <button class="py-2 px-3 mr-0 relative border-0 border-x-red-500 text-gray-100 dark:hover:bg-gray-700 rounded-xl hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
-          <svg class="h-8 w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24" stroke="currentColor">
+        <button class="py-2 px-3 mr-0 relative border-0 border-x-red-500 dark:text-slate-400 text-slate-600 dark:hover:bg-gray-700 rounded-xl hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
+          <svg class="h-8 w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 22 22" stroke="currentColor">
             <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
           </svg>
           <span class="absolute bottom-7 left-9 object-right-top -mt-2 -mr-3">
