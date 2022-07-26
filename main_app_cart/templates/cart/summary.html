@@ -7,7 +7,7 @@ padding and width {% endcomment %}
     <div class="container mx-auto px-4">
       <div class="p-8  lg:p-14 bg-white">
         <h2 class="mb-16 text-5xl font-semibold text-slate-700 font-heading ">Your cart</h2>
-        <div class="flex flex-wrap items-center -mx-4">
+        <div class="flex flex-wrap  items-stretch -mx-4">
           <div class="w-full xl:w-8/12 mb-8 xl:mb-0 px-4">
             <div class="hidden lg:flex w-full">
               <div class="w-full lg:w-3/6">
@@ -32,9 +32,12 @@ padding and width {% endcomment %}
             </div>
             <div class="mb-12 py-6 border-t border-b border-gray-200">
               {% comment %} card start!!! {% endcomment %}
-              {% for items in cart %}
-              {{items}}
-              <div class="flex flex-wrap items-center -mx-4 mb-6 md:mb-3">
+              {% for item in cart %}
+              {% with product=item.product %}
+              {% comment %} {{product.name}} {% endcomment %}
+              {% comment %} {{item}} {% endcomment %}
+              {% comment %} {{item.product.productimage_set.all.0.url}} {% endcomment %}
+              <div class="flex flex-wrap items-center justify-center md:justify-start -mx-4 mb-6 md:mb-3">
                 <div class="w-full md:w-4/6 lg:w-6/12 px-4 mb-6 md:mb-0">
                   <div class="flex -mx-4 flex-wrap items-center">
                     <div class="w-full md:w-1/3 px-4 mb-3">
@@ -42,31 +45,35 @@ padding and width {% endcomment %}
                         class="flex items-center justify-center w-full md:w-24 h-32 bg-gray-100"
                       >
                         <img
-                          class="h-full object-contain"
-                          src="yofte-assets/images/waterbottle.png"
+                          class="h-full object-cover"
+                          src="{{MEDIA_URL}}{{product.productimage_set.all.0.url}}"
                           alt=""
                         />
                       </div>
                     </div>
                     <div class="w-2/3 px-4">
-                      <h3 class="mb-2 text-xl text-slate-700 font-bold font-heading">
-                        BRILE water filter carafe
-                      </h3>
-                      <p class="text-slate-500">Maecenas 0.7 commodo sit</p>
+                      <a href="{{product.get_absolute_url}}">
+                        <h3 class="mb-2 text-xl text-slate-700 font-bold font-heading">
+                        {{product.name}}
+                        </h3>
+                      </a>
+                      <a href="{{product.category.get_absolute_url}}">
+                        <p class="text-slate-500">{{product.category}}</p>
+                      </a>
                     </div>
                   </div>
                 </div>
-                <div class="hidden lg:block lg:w-2/12 px-4">
+                <div class="hidden lg:block lg:w-2/12 px-2">
                   <p class="text-lg text-cyan-600 font-bold font-heading">
-                    $29.89
+                    ${{item.price}}
                   </p>
                   {% comment %} <span class="text-xs text-gray-500 line-through">$33.69</span> {% endcomment %}
                 </div>
-                <div class="w-auto md:w-1/6 lg:w-2/12 px-4">
+                <div class="w-auto md:w-1/6 lg:w-2/12 px-1">
                   <div
-                    class="inline-flex items-center px-4 font-semibold font-heading text-gray-500 border border-gray-200 focus:ring-blue-300 focus:border-blue-300 rounded-md"
+                    class="inline-flex items-center px-0 font-semibold font-heading text-gray-500 border border-gray-200 focus:ring-blue-300 focus:border-blue-300 rounded-md"
                   >
-                    <button class="py-2 hover:text-gray-700">
+                    <button class="px-2 py-6 hover:text-gray-900">
                       <svg
                         width="12"
                         height="2"
@@ -86,11 +93,12 @@ padding and width {% endcomment %}
                       </svg>
                     </button>
                     <input
-                      class="w-12 m-0 px-2 py-4 text-center md:text-right border-0 focus:ring-transparent focus:outline-none rounded-md"
+                      class="w-14 m-0 px-2 py-4 text-center  border-0 focus:ring-transparent focus:outline-none rounded-md"
                       type="number"
                       placeholder="1"
+                      value="{{item.quantity}}"
                     />
-                    <button class="py-2 hover:text-gray-700">
+                    <button class="px-2 py-5 hover:text-gray-900">
                       <svg
                         width="12"
                         height="12"
@@ -118,13 +126,21 @@ padding and width {% endcomment %}
                     </button>
                   </div>
                 </div>
-                <div class="w-auto md:w-1/6 lg:w-2/12 px-4 text-right">
+                <div class="w-auto md:w-1/6 lg:w-2/12 px-2 lg:pl-4 text-right">
                   <p class="text-lg text-cyan-600 font-bold font-heading">
-                    $29.89
+                    ${{item.total_price}}
                   </p>
                 </div>
-                <div class="order-2 md:order-1 w-full md:w-1/3 px-4"><a class="inline-block mr-16 px-8 py-4 text-white font-bold font-heading uppercase bg-red-300 hover:bg-red-400 rounded-md" href="#">Remove</a></div>
+                <div class="flex justify-center md:justify-start py-4 md:py-2 w-full md:w-1/3 px-0">
+                  <button id="delete-button" values={{product.id}} type="button" class="inline-block mr-2 px-7 py-3 text-white font-bold font-heading uppercase bg-red-600 hover:bg-red-700 rounded-md" href="#">Remove
+                    
+                  </button>
+                  <button id="update-button" values={{product.id}} type="button" class="inline-block ml-2 px-7 py-3 text-white font-bold font-heading uppercase bg-cyan-600 hover:bg-cyan-700 rounded-md" href="#">Update
+                    
+                  </button>
+                </div>
               </div>
+              {% endwith %}
               {% endfor %}
               {% comment %} end of cart items {% endcomment %}
             </div>
@@ -143,8 +159,8 @@ padding and width {% endcomment %}
               >
             </div> {% endcomment %}
           </div>
-          <div class="w-full xl:w-4/12 px-4">
-            <div class="p-6 md:p-12  bg-slate-700 ">
+          <div class="w-full xl:w-4/12 px-4 flex flex-col justify-center ">
+            <div class="flex flex-col justify-center  p-6 md:p-12 xl:h-3/4 h-full  bg-slate-700 ">
               <h2 class="mb-6 text-4xl font-bold font-heading text-white">
                 Cart totals
               </h2>
@@ -153,7 +169,7 @@ padding and width {% endcomment %}
               >
                 <span class="text-blue-50">Subtotal</span>
                 <span class="text-xl font-bold font-heading text-white"
-                  >$89.67</span
+                  >$ {{cart.get_total_price}}</span
                 >
               </div>
               <h4 class="mb-2 text-xl font-bold font-heading text-white">
@@ -162,7 +178,7 @@ padding and width {% endcomment %}
               <div class="flex mb-2 justify-between items-center">
                 <span class="text-blue-50">Next day</span>
                 <span class="text-xl font-bold font-heading text-white"
-                  >$11.00</span
+                  >$ 11.00</span
                 >
               </div>
               <div class="flex mb-10 justify-between items-center">
@@ -174,7 +190,7 @@ padding and width {% endcomment %}
                   >Order total</span
                 >
                 <span class="text-xl font-bold font-heading text-white"
-                  >$100.67</span
+                  >$ {{cart.get_order_total}}</span
                 >
               </div>
               <a

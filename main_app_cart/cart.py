@@ -44,9 +44,11 @@ class Cart():
         product_ids = self.cart.keys()
         print('product_ids:~',product_ids)
         products = Product.products.filter(id__in=product_ids)
+        print(products)
         cart = self.cart.copy()
         
         for product in products:
+            print('in for', product)
             cart[str(product.id)]['product'] = product
             
         
@@ -61,3 +63,9 @@ class Cart():
     
     def __str__(self):
         return str(self.cart)
+    
+    def get_total_price(self):
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+
+    def get_order_total(self):
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())+Decimal(10)
