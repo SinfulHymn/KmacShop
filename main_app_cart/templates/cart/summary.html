@@ -35,7 +35,7 @@ padding and width {% endcomment %}
               {% for item in cart %}
               {% with product=item.product %}
               {% comment %} {{product.name}} {% endcomment %}
-              {{item}}
+              {% comment %} {{item}} {% endcomment %}
               {% comment %} {{item.product.productimage_set.all.0.url}} {% endcomment %}
               {% comment %} {{product.id}} {% endcomment %}
               <div class="flex flex-wrap items-center justify-center md:justify-start -mx-4 mb-6 md:mb-3">
