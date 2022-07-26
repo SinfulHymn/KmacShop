@@ -120,7 +120,7 @@
               </div>
             </div>
           </div>
-          <div>
+          {% comment %} <div>
             <ul class="flex flex-wrap mb-16 border-b-2">
               <li class="w-1/2 md:w-auto"><a class="inline-block py-6 px-10 bg-white text-gray-500 font-bold font-heading shadow-2xl" href="#">Description</a></li>
               <li class="w-1/2 md:w-auto"><a class="inline-block py-6 px-10 text-gray-500 font-bold font-heading" href="#">Customer reviews</a></li>
@@ -129,20 +129,15 @@
             </ul>
             <h3 class="mb-8 text-3xl font-bold font-heading text-blue-300">Summer collection and laoreet get</h3>
             <p class="max-w-2xl text-gray-500">I had interdum at ante porta, eleifend feugiat nunc. In semper euismod mi a accums lorem sad. Morbi at auctor nibh. Aliquam tincidunt placerat mollis. Lorem euismod dignissim, felis tortor ollis eros, non ultricies turpis.</p>
-          </div>
+          </div> {% endcomment %}
         </div>
       </section>
-{{cart}}
+
     </div>
 
 
     <script>
-      
- 
-    
       $(document).on('click', '#cart-button', function(e){
-        
-        
         e.preventDefault();
         $.ajax({
           type: 'POST',

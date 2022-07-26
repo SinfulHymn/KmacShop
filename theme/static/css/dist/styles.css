@@ -850,6 +850,11 @@ select {
   margin-right: -0.5rem;
 }
 
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -980,6 +985,10 @@ select {
 
 .mr-16 {
   margin-right: 4rem;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
 }
 
 .block {
