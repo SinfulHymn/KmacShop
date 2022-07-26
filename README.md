@@ -28,7 +28,7 @@
 
 Description            |  Screenshot
 :---:|:----:
-| <p align="left">- A Django ecommerce web application that displays a directory keyboard related products. <br><br> - Users will be able to explore Keyboard products and view all their details about the Product! <br> - Users can leave a reviews on Products they have purchased. <br>- Users are able to browse and filter products by their categories <br> - Users are able to add products to their cart and maintain session with their cart <br> - Users are able to </p> | ![](https://i.imgur.com/bGD2s2z.jpg) |
+| <p align="left">- A Django ecommerce web application that displays a directory keyboard related products. <br> - Users will be able to explore Keyboard products and view all their details about the Product! <br> - Users can leave a reviews on Products they have purchased. <br>- Users are able to browse and filter products by their categories <br> - Users are able to add products to their cart and maintain session with their cart <br> - Users are able to modify cart session from the cart summary page<br> - users are able to delete products or update products from their cart with full functionality <br> - when users make changes to their carts all the data is managed correctly in session <br> - subtotals and price items are calculated correctly as well as cart quantity</p> | ![](https://i.imgur.com/bGD2s2z.jpg) |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -50,43 +50,68 @@ Cart             |  Checkout
 
 - In this app we will access a database of products and display them on the index page
 - User will Be able to view a directory of products and browse any for full information
+- User will be able to add items to their cart session
+- User will be able to update their items in the cart summary
+- User will be able to delete their items in the cart summary
 - User will be able to sign up or log in
 - if user is logged in they can
 
         - can view products 
-        - add products to cart 
-        - maintain a session with their cart
-        - checkout items with their cart
-        - add reviews to products 
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 # Routes
 
 ```
 path('', views.index, name='index'),
-path('about/', views.about, name='about'),
 path('products/<slug:slug>/', views.product_detail, name='product_detail'),
-path('category/<category:slug>/', views.category_index, name='category_index')
-path('account/signup/', views.signup, name='signup')
+path('categories/<slug:category_slug>/', views.category_index, name='catergory_index'),
+path('categories/<slug:category_slug>/products/<slug:product_slug>/', views.category_products, name='category_products'),
+path('', views.cart_summary, name='cart_summary'),
+path('add/', views.cart_add, name='cart_add'),
+path('delete/', views.cart_delete, name='cart_delete'),
+path('update/', views.cart_update, name='cart_update'),
 ```
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-# Models/Schema
+# Models
 
 ### subject to change
 
-Event/Review Schema:
+Product Model:
 
 ```
-
+class Product(models.Model):
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, related_name='product_creator', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, db_index=True)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
+    slug = models.SlugField(max_length=255)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    in_stock = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+    products = ProductManager()
 ```
 
-User Schema:
+ProductImage Model:
 
 ```
-
+class ProductImage(models.Model):
+    url = models.ImageField(upload_to='images/', blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 ```
 
+Catergory Model:
+```
+class Category(models.Model):
+    name = models.CharField(max_length=255, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True)
+```
+<p align="right">(<a href="#top">back to top</a>)</p>
 # Current State
 
 - User is currently able to visit the site and see a directory of products
