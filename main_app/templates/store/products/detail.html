@@ -4,7 +4,6 @@
     {% block content %}
     {% comment %} grow container with appropriate padding and width {% endcomment %}
     <div class=" my-10 mx-auto w-full md:container  grow ">
-    
 
      <section class="">
         <div class="container mx-auto px-4">
@@ -37,7 +36,7 @@
               <div class="lg:pl-20">
                 <div class="mb-10 pb-10 border-b">
                   <a href="{{product.category.get_absolute_url}}">
-                    <span class="text-gray-500">Back: {{product.category | title}}</span>
+                    <span class="text-gray-500">Back to: <span class="underline hover:text-gray-800 ">{{product.category | title}}</span></span>
                   </a>
                   <h2 class="mt-2 mb-6 max-w-xl text-2xl md:text-3xl font-bold text-gray-600 font-heading">{{product.name}}</h2>
                   <div class="mb-8">
@@ -67,27 +66,32 @@
                 <div class="flex mb-12">
                   <div class="mr-6">
                     <span class="block mb-4 font-bold font-heading text-gray-400 uppercase">QTY</span>
-                    <div class="inline-flex items-center px-4 font-semibold font-heading text-gray-500 border border-gray-200 focus:ring-blue-300 focus:border-blue-300 rounded-md">
-                      <button class="py-2 hover:text-gray-700">
+                    <div id="qty-adjuster" class="inline-flex items-center px-4 font-semibold font-heading text-gray-500 border border-gray-200 focus:ring-blue-300 focus:border-blue-300 rounded-md">
+                      <button id="qty-adjuster-down" class="py-2 mr-2 hover:text-gray-700">
                         <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.35"><rect x="12" width="2" height="12" transform="rotate(90 12 0)" fill="currentColor"></rect></g></svg>
                       </button>
-                      <input class="w-12 m-0 px-2 py-4 text-center md:text-right border-0 focus:ring-transparent focus:outline-none rounded-md" type="number" placeholder="1">
-                      <button class="py-2 hover:text-gray-700">
+                      <input id="qty-adjuster-value" class="w-12 m-0 px-2 py-4 text-center md:text-right border-0 focus:ring-transparent focus:outline-none rounded-md" type="number" min="1" value="1">
+                      <button id="qty-adjuster-up" class="py-2 ml-2 hover:text-gray-700">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.35"><rect x="5" width="2" height="12" fill="currentColor"></rect><rect x="12" y="5" width="2" height="12" transform="rotate(90 12 5)" fill="currentColor"></rect></g></svg>
                       </button>
                     </div>
                   </div>
                   <div>
-                    <span class="block mb-4 font-bold font-heading text-gray-400 uppercase">Size</span>
+                    {% comment %} <span class="block mb-4 font-bold font-heading text-gray-400 uppercase">Size</span>
                     <select class="pl-6 pr-10 py-4 font-semibold font-heading text-gray-500 border border-gray-200 focus:ring-blue-300 focus:border-blue-300 rounded-md" name="" id="">
                       <option value="1">Medium</option>
                       <option value="2">Small</option>
                       <option value="3">Large</option>
-                    </select>
+                    </select> {% endcomment %}
                   </div>
                 </div>
+                
                 <div class="flex flex-wrap -mx-4 mb-14 items-center">
-                  <div class="w-full xl:w-2/3 px-4 mb-4 xl:mb-0"><a class="block bg-gray-500 hover:bg-gray-600 text-center text-white font-bold font-heading py-5 px-8 rounded-md uppercase transition duration-200" href="#">Add to cart</a></div>
+                  {% comment %} ~~~~~~~~~~ add cart ~~~~ button {% endcomment %}
+                  <div class="w-full xl:w-2/3 px-4 mb-4 xl:mb-0">
+                    <button type="button" id="cart-button" value="{{product.id}}" class="w-full block bg-gray-500 hover:bg-gray-600 text-center text-white font-bold font-heading py-5 px-8 rounded-md uppercase transition duration-200" >Add to cart</button>
+                  </div>
+                  
                   <div class="w-full xl:w-1/3 px-4">
                     <a class="ml-auto sm:ml-0 flex-shrink-0 inline-flex mr-4 items-center justify-center w-16 h-16 rounded-md border hover:border-gray-500" href="#">
                       <svg class="w-6 h-6" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,6 +132,46 @@
           </div>
         </div>
       </section>
-
+{{cart}}
     </div>
+
+
+    <script>
+      
+ 
+    
+      $(document).on('click', '#cart-button', function(e){
+        
+        
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '{% url "main_app_cart:cart_add" %}',
+          data:{
+            productid: $('#cart-button').val(),
+            productqty: $("#qty-adjuster-value").val(),
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            action: 'post',
+          },
+          success: function(json){
+              $("#cart-qty").text(json.quantity)
+          },
+          error: function(xhr, errmsg, err){
+            console.log(err)
+            console.log(errmsg)
+            console.log(xhr.status + ": " + xhr.responseText);
+          }
+        })
+      })
+    
+    </script>
+
+    <script>
+      {% comment %} function increaseValue(){
+        let value = parseInt(document.getElementById("qty-adjuster-value").value)
+      } {% endcomment %}
+
+      
+    </script>
+
     {% endblock %}

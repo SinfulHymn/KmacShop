@@ -1,8 +1,8 @@
-<nav class="bg-white border-gray-200 p-3 md:px-6  dark:bg-gray-900">
+<nav class="bg-white border-gray-200 py-3 px-6 lg:px-3 dark:bg-gray-900">
   <div
-    class="flex flex-wrap justify-center xs:justify-between items-center mx-auto max-w-screen-2xl"
+    class="flex flex-wrap justify-center sm:justify-between items-center mx-auto max-w-screen-2xl"
   >
-    <a href="/" class="flex items-center xs:pb-0 pb-2">
+    <a href="/" class="flex items-center sm:pb-0 pb-2">
       <img
         src="https://i.imgur.com/2FHT6uy.png"
         class="mr-3 h-8 sm:h-9"
@@ -23,20 +23,29 @@
       >
       <a
         href="#"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
         >Sign Up</a
       >
-      <button class="p-2 mr-0 relative border-0 border-x-red-500 text-gray-100  hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
-        <svg class="h-8 w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-        </svg>
-        <span class="absolute bottom-7 left-8 object-right-top -mt-2 -mr-3">
-          <div class=" border-0 rounded-full  inline-flex items-center px-1.5 py-0.5 border- border-white text-xs font-semibold leading-4 bg-red-500 text-white">
-            3
-          </div>
-        </span>
-      </button>
-
+      <a href="{% url "main_app_cart:cart_summary"  %}">
+        <button class="py-2 px-3 mr-0 relative border-0 border-x-red-500 text-gray-100 dark:hover:bg-gray-700 rounded-xl hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
+          <svg class="h-8 w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+          <span class="absolute bottom-7 left-9 object-right-top -mt-2 -mr-3">
+            <div id="cart-qty" class=" border-0 rounded-full  inline-flex items-center px-1.5 py-0.5 border- border-white text-xs font-semibold leading-4 bg-red-500 text-white">
+              {% with total_quantity=cart|length %}
+                {% if total_quantity > 0 %}
+                  {{total_quantity}}
+                {%else%}
+                  0
+                {% endif %}
+              {% endwith %}
+            </div>
+          </span>
+        </button>
+      </a>
+      
+     
       <button
         data-collapse-toggle="mobile-menu-2"
         type="button"
@@ -77,7 +86,7 @@
       id="mobile-menu-2"
     >
       <ul
-        class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+        class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-7  lg:mt-0"
       >
         <li>
           <a

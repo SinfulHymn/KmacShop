@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # for every page, add the categories to the context
                 'main_app.context_processors.categories',
+                'main_app_cart.context_processors.cart',
             ],
         },
     },
