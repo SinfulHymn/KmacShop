@@ -1,6 +1,5 @@
-
-
 from math import prod
+from main_app.models import Product
 
 
 class Cart():
@@ -25,7 +24,13 @@ class Cart():
             self.cart[product_id] = {'price': str(product.price),'quantity': int(quantity)}
         
         self.session.modified = True
-        
+    
+    
+    def __iter__(self):
+        # get the product id and quantity in the session cart to query the database for the products
+        product_ids = self.cart.keys()
+        products = Product.products.filter(id__in=product_ids)
+        cart = self.cart.copy()
         
     def __len__(self):
         # get cart data and count the number of items

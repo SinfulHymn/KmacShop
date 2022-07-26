@@ -5,29 +5,30 @@ padding and width {% endcomment %}
 <div class="my-10 mx-auto w-full md:container grow">
   <section class="bg-gray-100">
     <div class="container mx-auto px-4">
-      <div class="p-8 lg:p-20 bg-white">
-        <h2 class="mb-20 text-5xl font-semibold text-gray-500 font-heading ">Your cart</h2>
+      <div class="p-8  lg:p-14 bg-white">
+        <h2 class="mb-16 text-5xl font-semibold text-slate-700 font-heading ">Your cart</h2>
         <div class="flex flex-wrap items-center -mx-4">
           <div class="w-full xl:w-8/12 mb-8 xl:mb-0 px-4">
             <div class="hidden lg:flex w-full">
               <div class="w-full lg:w-3/6">
-                <h4 class="mb-6 font-bold font-heading text-gray-500">
+                <h4 class="mb-6 font-bold font-heading text-blue-grey-500">
                   Description
                 </h4>
               </div>
               <div class="w-full lg:w-1/6">
-                <h4 class="mb-6 font-bold font-heading text-gray-500">Price</h4>
+                <h4 class="mb-6 font-bold font-heading text-blue-grey-500">Price</h4>
               </div>
               <div class="w-full lg:w-1/6 text-center">
-                <h4 class="mb-6 font-bold font-heading text-gray-500">
+                <h4 class="mb-6 font-bold font-heading text-blue-grey-500">
                   Quantity
                 </h4>
               </div>
               <div class="w-full lg:w-1/6 text-right">
-                <h4 class="mb-6 font-bold font-heading text-gray-500">
+                <h4 class="mb-6 font-bold font-heading text-blue-grey-500">
                   Subtotal
                 </h4>
               </div>
+              
             </div>
             <div class="mb-12 py-6 border-t border-b border-gray-200">
               <div class="flex flex-wrap items-center -mx-4 mb-6 md:mb-3">
@@ -45,18 +46,18 @@ padding and width {% endcomment %}
                       </div>
                     </div>
                     <div class="w-2/3 px-4">
-                      <h3 class="mb-2 text-xl font-bold font-heading">
+                      <h3 class="mb-2 text-xl text-slate-700 font-bold font-heading">
                         BRILE water filter carafe
                       </h3>
-                      <p class="text-gray-500">Maecenas 0.7 commodo sit</p>
+                      <p class="text-slate-500">Maecenas 0.7 commodo sit</p>
                     </div>
                   </div>
                 </div>
                 <div class="hidden lg:block lg:w-2/12 px-4">
-                  <p class="text-lg text-blue-500 font-bold font-heading">
+                  <p class="text-lg text-cyan-600 font-bold font-heading">
                     $29.89
                   </p>
-                  <span class="text-xs text-gray-500 line-through">$33.69</span>
+                  {% comment %} <span class="text-xs text-gray-500 line-through">$33.69</span> {% endcomment %}
                 </div>
                 <div class="w-auto md:w-1/6 lg:w-2/12 px-4">
                   <div
@@ -115,103 +116,16 @@ padding and width {% endcomment %}
                   </div>
                 </div>
                 <div class="w-auto md:w-1/6 lg:w-2/12 px-4 text-right">
-                  <p class="text-lg text-blue-500 font-bold font-heading">
+                  <p class="text-lg text-cyan-600 font-bold font-heading">
                     $29.89
                   </p>
                 </div>
+                <div class="order-2 md:order-1 w-full md:w-1/3 px-4"><a class="inline-block mr-16 px-8 py-4 text-white font-bold font-heading uppercase bg-red-300 hover:bg-red-400 rounded-md" href="#">Remove</a></div>
               </div>
-              <div class="flex flex-wrap items-center -mx-4">
-                <div class="w-full md:w-4/6 lg:w-6/12 px-4 mb-6 md:mb-0">
-                  <div class="flex -mx-4 flex-wrap items-center">
-                    <div class="w-full md:w-1/3 px-4 mb-3">
-                      <div
-                        class="flex items-center justify-center w-full md:w-24 h-32 bg-gray-100"
-                      >
-                        <img
-                          class="h-full object-contain"
-                          src="yofte-assets/images/basketball.png"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="w-full md:w-2/3 px-4">
-                      <h3 class="mb-2 text-xl font-bold font-heading">
-                        Nike basketball ball
-                      </h3>
-                      <p class="text-gray-500">Lorem ipsum dolor L</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="hidden lg:block lg:w-2/12 px-4">
-                  <p class="text-lg text-blue-500 font-bold font-heading">
-                    $29.89
-                  </p>
-                  <span class="text-xs text-gray-500 line-through">$33.69</span>
-                </div>
-                <div class="w-auto md:w-1/6 lg:w-2/12 px-4">
-                  <div
-                    class="inline-flex items-center px-4 font-semibold font-heading text-gray-500 border border-gray-200 focus:ring-blue-300 focus:border-blue-300 rounded-md"
-                  >
-                    <button class="py-2 hover:text-gray-700">
-                      <svg
-                        width="12"
-                        height="2"
-                        viewBox="0 0 12 2"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g opacity="0.35">
-                          <rect
-                            x="12"
-                            width="2"
-                            height="12"
-                            transform="rotate(90 12 0)"
-                            fill="currentColor"
-                          ></rect>
-                        </g>
-                      </svg>
-                    </button>
-                    <input
-                      class="w-12 m-0 px-2 py-4 text-center md:text-right border-0 focus:ring-transparent focus:outline-none rounded-md"
-                      type="number"
-                      placeholder="1"
-                    />
-                    <button class="py-2 hover:text-gray-700">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g opacity="0.35">
-                          <rect
-                            x="5"
-                            width="2"
-                            height="12"
-                            fill="currentColor"
-                          ></rect>
-                          <rect
-                            x="12"
-                            y="5"
-                            width="2"
-                            height="12"
-                            transform="rotate(90 12 5)"
-                            fill="currentColor"
-                          ></rect>
-                        </g>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="w-auto md:w-1/6 lg:w-2/12 px-4 text-right">
-                  <p class="text-lg text-blue-500 font-bold font-heading">
-                    $29.89
-                  </p>
-                </div>
-              </div>
+              {% comment %} end of cart items {% endcomment %}
             </div>
-            <div class="flex flex-wrap items-center lg:-mb-4">
+            {% comment %} end of cart item container  {% endcomment %}
+            {% comment %} <div class="flex flex-wrap items-center lg:-mb-4">
               <span class="mr-12 mb-4 font-medium">Apply discount code:</span>
               <input
                 class="flex-1 md:flex-none mr-6 sm:mr-0 md:mr-6 mb-4 px-8 py-4 placeholder-gray-800 font-bold font-heading border rounded-md"
@@ -223,7 +137,7 @@ padding and width {% endcomment %}
                 href="#"
                 >Apply</a
               >
-            </div>
+            </div> {% endcomment %}
           </div>
           <div class="w-full xl:w-4/12 px-4">
             <div class="p-6 md:p-12  bg-slate-700 ">
@@ -260,7 +174,7 @@ padding and width {% endcomment %}
                 >
               </div>
               <a
-                class="block w-full py-4 bg-orange-300 hover:bg-orange-400 text-center text-white font-bold font-heading uppercase rounded-md transition duration-200"
+                class="block w-full py-4 bg-lime-900 hover:bg-lime-800 text-center text-white font-bold font-heading uppercase rounded-md transition duration-200"
                 href="#"
                 >Go to Checkout</a
               >

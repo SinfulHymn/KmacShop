@@ -19,7 +19,7 @@
               <div class="image-container mb-4 w-full relative">
                 {% comment %} href for the product being the image {% endcomment %}
                 <a class="block" href="{{p.get_product_url}}">
-                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.productimage_set.all.1.url }}" alt="{{p.image}}">
+                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.productimage_set.all.0.url }}" alt="{{p.image}}">
                 </a>
               </div>
             {% comment %} container for the product name and price {% endcomment %}
