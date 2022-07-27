@@ -1,1 +1,1 @@
-web: --threads=2 gunicorn kmachappy.wsgi --timeout 120 
+web: gunicorn kmachappy.wsgi --timeout 120 --threads=2
