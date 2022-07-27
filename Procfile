@@ -1,1 +1,1 @@
-web: gunicorn kmachappy.wsgi --timeout 120 --log-level debug
+web: --threads=2 gunicorn kmachappy.wsgi --timeout 120 
