@@ -1,11 +1,12 @@
 {% extends 'base.html' %} 
+{% load tailwind_tags %}
 {% block title %} Cart - {% endblock %} 
 {% block content %} {% comment %} grow container with appropriate
 padding and width {% endcomment %}
 <div class="my-10 mx-auto w-full md:container grow">
   <section class="bg-gray-100">
     <div class="container mx-auto px-4">
-      <div class="p-8  lg:p-14 bg-white">
+      <div class="p-8  lg:p-14 bg-white shadow-2xl">
         <h2 class="mb-16 text-5xl font-semibold text-slate-700 font-heading ">Your cart</h2>
         <div class="flex flex-wrap  items-stretch -mx-4">
           <div class="w-full xl:w-8/12 mb-8 xl:mb-0 px-4">
@@ -163,7 +164,7 @@ padding and width {% endcomment %}
             </div> {% endcomment %}
           </div>
           <div class="w-full xl:w-4/12 px-4 flex flex-col justify-center ">
-            <div class="flex flex-col justify-center  p-6 md:p-12  h-full  bg-slate-700 ">
+            <div class="flex flex-col justify-center  p-6 md:p-12  h-full shadow-lg  bg-slate-700 ">
               <h2 class="mb-6 text-4xl font-bold font-heading text-white">
                 Cart totals
               </h2>

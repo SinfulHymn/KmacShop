@@ -42,10 +42,14 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        screens: {
-            'xs': '475px',
-            ...defaultTheme.screens,
-        },
+      screens: {
+        'xs': '475',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+      },
         colors: ({ colors }) => ({
             inherit: colors.inherit,
             current: colors.current,

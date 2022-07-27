@@ -15,16 +15,19 @@ class ProductManager(models.Manager):
     def get_queryset(self):
         return super(ProductManager,self).get_queryset().filter(is_active=True)
 
-
-# Create your models here.
 class Category(models.Model):
     # name of the category
-    name = models.CharField(max_length=255, db_index=True)
+    name = models.CharField(
+        max_length=255,
+        db_index=True
+    )
     # slug is used to create a URL for the category
     #  e.g. /categories/<slug>/ (slug is the name of the category)
     # unique=True means that the slug is unique
-    slug = models.SlugField(max_length=255, unique=True)
-    
+    slug = models.SlugField(
+        max_length=255,
+        unique=True
+    )
     # meta class is used to set the name of the table in the database
     class Meta:
         # sets the name of the table in the database to 'categories'

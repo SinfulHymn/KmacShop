@@ -17,27 +17,28 @@
     <div class="flex items-center lg:order-2">
       {% if user.is_authenticated %}
       <a
-      href="#"
+      href="{% url 'main_app_account:logout'%}"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
       >Log Out</a>
-      {% else %}
-      <a
-        href="#"
-        class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 transition duration-500 ease-in-out"
-        >Log in</a>
-      <a
-        href="#"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
-        >Sign Up</a>
-      {% endif %}
-
-      <a href="#">
+      <a href="{% url 'main_app_account:dashboard' %}">
         <button class="py-2 px-3 mr-0 relative border-0 border-x-red-500 dark:text-slate-400 text-slate-600 dark:hover:bg-gray-700 rounded-xl hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
           <svg class="h-8 w-8 " stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"  viewBox="1 0 24 24">
             <path d="M12.5 11a4 4 0 1 1 4-4A4 4 0 0 1 12.5 11zm0-7a3 3 0 1 0 3 3A3 3 0 0 0 12.5 4zM22 22H21v-.5a8.5 8.5 0 0 0-17 0V22H3v-.5a9.5 9.5 0 0 1 19 0z"/>
           </svg>
         </button>
       </a>
+      {% else %}
+      <a
+        href="{% url 'main_app_account:login' %}"
+        class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 transition duration-500 ease-in-out"
+        >Sign in</a>
+      <a
+        href="{% url 'main_app_account:register' %}"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
+        >Sign Up</a>
+      {% endif %}
+
+      
       <a href="{% url "main_app_cart:cart_summary"  %}">
         <button class="py-2 px-3 mr-0 relative border-0 border-x-red-500 dark:text-slate-400 text-slate-600 dark:hover:bg-gray-700 rounded-xl hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
           <svg class="h-8 w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 22 22" stroke="currentColor">

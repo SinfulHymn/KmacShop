@@ -41,7 +41,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255, blank=True)
-    last_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255, blank=True)
     # delivery address
     country = CountryField()
     phone_number = models.CharField(max_length=15, blank=True)
@@ -67,8 +67,14 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
         verbose_name = "Accounts"
         verbose_name_plural = "Accounts"
 
-    def get_full_name(self):
-        return self.first_name + ' ' + self.last_name
+    def email_user(self, subject, message):
+        send_mail(
+            subject,
+            message,
+            'l@1.com',
+            [self.email],
+            fail_silently=False,
+        )
 
-    def get_short_name(self):
-        return self.first_name
+    def __str__(self):
+        return self.user_name
