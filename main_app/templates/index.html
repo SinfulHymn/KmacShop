@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load tailwind_tags %}
+{% load static %}
 {% block title %} Home - {% endblock %}
     {% block content %}
     {% include 'partials/heading.html'%}
     {% comment %} grow container with padding {% endcomment %}
+    
     <div class=" p-6 w-full md:container mx-auto grow">
       {% comment %} title text {% endcomment %}
       <div>
