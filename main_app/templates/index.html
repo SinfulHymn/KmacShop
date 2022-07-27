@@ -22,7 +22,7 @@
               <div class="image-container mb-4 w-full relative">
                 {% comment %} href for the product being the image {% endcomment %}
                 <a class="block" href="{{p.get_absolute_url}}">
-                  <img class="pt-0 w-full h-full" src="{{MEDIA_URL}}{{ p.productimage_set.all.0.url }}" alt="{{p.image}}"> 
+                  <img class="pt-0 w-full h-full" src="{{p.productimage_set.all.0 }}" alt="{{p.image}}"> 
                 </a>
               </div>
               

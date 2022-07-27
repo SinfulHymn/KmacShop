@@ -90,4 +90,4 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"image for product {self.product.name} - {self.url}"
+        return f"{S3_BASE_URL}{BUCKET}/{self.url}"
