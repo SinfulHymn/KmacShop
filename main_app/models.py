@@ -3,7 +3,7 @@ from tabnanny import verbose
 from unicodedata import category
 from venv import create
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.urls import reverse
 import uuid
 import boto3
@@ -42,7 +42,7 @@ class Product(models.Model):
     # build a link between the category and the product
     # on_delete=models.CASCADE means that if the category is deleted, the product will be deleted
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User, related_name='product_creator', on_delete=models.CASCADE)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='product_creator', on_delete=models.CASCADE)
     name = models.CharField(max_length=255, db_index=True)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/', blank=True)

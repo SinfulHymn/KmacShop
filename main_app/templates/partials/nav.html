@@ -15,17 +15,22 @@
     </a>
     
     <div class="flex items-center lg:order-2">
-      
+      {% if user.is_authenticated %}
+      <a
+      href="#"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
+      >Log Out</a>
+      {% else %}
       <a
         href="#"
         class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 transition duration-500 ease-in-out"
-        >Log in</a
-      >
+        >Log in</a>
       <a
         href="#"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition duration-500 ease-in-out"
-        >Sign Up</a
-      >
+        >Sign Up</a>
+      {% endif %}
+
       <a href="#">
         <button class="py-2 px-3 mr-0 relative border-0 border-x-red-500 dark:text-slate-400 text-slate-600 dark:hover:bg-gray-700 rounded-xl hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Cart">
           <svg class="h-8 w-8 " stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"  viewBox="1 0 24 24">

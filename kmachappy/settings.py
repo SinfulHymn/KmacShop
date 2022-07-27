@@ -28,9 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 INSTALLED_APPS = [
     'main_app',
     'main_app_cart',
+    'main_app_account',
     'tailwind',
     'theme',
     'django_browser_reload',
@@ -81,7 +83,7 @@ WSGI_APPLICATION = 'kmachappy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce',
+        'NAME': 'kmacshop_ecommerce',
     }
 }
 
@@ -138,3 +140,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 
+AUTH_USER_MODEL = 'main_app_account.UserBase'
+
+LOGIN_REDIRECT_URL = '/account/dashboard/'
+LOGIN_URL = '/account/login/'
+
+# configure django app for heroku
+
+import django_on_heroku
+django_on_heroku.settings(locals())
