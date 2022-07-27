@@ -94,7 +94,8 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"{S3_BASE_URL}{BUCKET}/{self.url}"
     
-class Reviews(models.Model):
+    
+class Review(models.Model):
     # many reviews can belong to one product
     # build a link between the product and the review
     #   on_delete=models.CASCADE means that if the product is deleted, the review will be deleted
@@ -112,7 +113,7 @@ class Reviews(models.Model):
     def __str__(self):
         return f"{self.title} - {self.user}"
 
-class Orders(models.Moodel):
+class Order(models.Model):
     order_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     items = models.ManyToManyField(Product)

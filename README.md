@@ -40,7 +40,7 @@ Index/Home             |  Category/Filtered
 
 Product Show             |   ERD still missing models
 :-------------------------:|:-------------------------:
-![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/rJpsWhG.png)
+![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/OWwkITK.png)
 Cart             |  Checkout
 :-------------------------:|:-------------------------:
 
@@ -71,6 +71,11 @@ path('', views.cart_summary, name='cart_summary'),
 path('add/', views.cart_add, name='cart_add'),
 path('delete/', views.cart_delete, name='cart_delete'),
 path('update/', views.cart_update, name='cart_update'),
+path('login/', auth_views.LoginView.as_view(template_name='account/registration/login.html',form_class=UserLoginForm), name='login'),
+path('logout/', auth_views.LogoutView.as_view(next_page='/account/login/'), name='logout'),
+path('register/', views.account_register, name='register'),
+path('activate/<slug:uidb64>/<slug:token>/', views.account_activate, name='activate'),
+path('dashboard/', views.dashboard, name='dashboard'),
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
