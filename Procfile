@@ -1,1 +1,1 @@
-web: gunicorn kmachappy.wsgi
+web: gunicorn kmachappy.wsgi --timeout 120
