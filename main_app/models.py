@@ -11,6 +11,8 @@ import boto3
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'ecommerce-keys-u32'
 
+
+
 class ProductManager(models.Manager):
     def get_queryset(self):
         return super(ProductManager,self).get_queryset().filter(is_active=True)
@@ -91,3 +93,49 @@ class ProductImage(models.Model):
     
     def __str__(self):
         return f"{S3_BASE_URL}{BUCKET}/{self.url}"
+    
+class Reviews(models.Model):
+    # many reviews can belong to one product
+    # build a link between the product and the review
+    #   on_delete=models.CASCADE means that if the product is deleted, the review will be deleted
+    #   related_name='reviews' means that the reviews will be linked to the product
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+    rating = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    class Meta:
+        ordering = ('-created',)
+    
+    def __str__(self):
+        return f"{self.title} - {self.user}"
+
+class Orders(models.Moodel):
+    order_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    items = models.ManyToManyField(Product)
+    ordered_date = models.DateTimeField(auto_now_add=True)
+    ordered_date_updated = models.DateTimeField(auto_now=True)
+    ordered_by = models.CharField(max_length=50)
+    ordered_address = models.CharField(max_length=100)
+    ordered_city = models.CharField(max_length=50)
+    ordered_state = models.CharField(max_length=50)
+    ordered_zip = models.CharField(max_length=10)
+    ordered_phone = models.CharField(max_length=10)
+    ordered_email = models.EmailField()
+    ordered_total = models.DecimalField(max_digits=10, decimal_places=2)
+    ordered_status = models.CharField(max_length=50)
+
+    def __str__(self):
+        return str(self.order_id)
+
+    def get_absolute_url(self):
+        return reverse('orders:detail', kwargs={'pk': self.pk})
+
+    def get_total(self):
+        total = 0
+        for item in self.items.all():
+            total += item.price
+        return total

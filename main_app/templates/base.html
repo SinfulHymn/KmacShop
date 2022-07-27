@@ -1,21 +1,22 @@
-{% load tailwind_tags %} {% load static %}
+{% load static %}
+{% load tailwind_tags %} 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/images/apple-touch-icon.png'%}">
     {% include "partials/favicon.html"%}
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
-   
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
-
-    <script
-			  src="https://code.jquery.com/jquery-3.6.0.min.js"
-			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-			  crossorigin="anonymous"></script>
-    <title>{% block title %} {% endblock %} KmacShop</title>
     
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <title>{% block title %} {% endblock %} KmacShop</title>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
     {% tailwind_css %}
     
   </head>
