@@ -38,9 +38,9 @@ Index/Home             |  Category/Filtered
 :-------------------------:|:-------------------------:
 ![](https://i.imgur.com/I7mtFwB.png)  |  ![](https://i.imgur.com/4BJ71X9.png)
 
-Product Show             |   ERD still missing models
+Product Show             |   Current ERD
 :-------------------------:|:-------------------------:
-![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/qnuVm55.png)
+![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/cMeAhAT.png)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
