@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, ProductImage
+from .models import Category, Product, ProductImage, Order, ProductReview
 
 # Register your models here.
 # @admin is used to register the models vs admin.site.register(Category)
@@ -25,3 +25,5 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(ProductImage)
+admin.site.register(ProductReview)
+admin.site.register(Order)

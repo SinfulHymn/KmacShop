@@ -94,7 +94,7 @@ class ProductReview(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     content = models.TextField()
-    rating = models.IntegerField(default=0)
+    rating = models.IntegerField(default=5)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)

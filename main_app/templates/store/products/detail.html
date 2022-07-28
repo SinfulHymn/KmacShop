@@ -173,18 +173,15 @@
             
             <div class="container">
               <div class="w-full rounded-lg shadow-md shadow-slate-600/50">
-                <form action="" class="w-full p-4">
+                <form action="{% url 'main_app:add_review' product.id %}" method="post" class="w-full p-4">
                   <label for="review-form">Add a Review</label>
                   <div id="review-form" class="mb-2">
-                    
+                    {% csrf_token %}
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
-                      title
-                    <input type="text" name="title" class="block w-full px-4 py-2 rounded-lg border border-gray-300 placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" placeholder="title">
-                    <label for="comment" class="text-lg text-gray-600">Body</label>
-                    <textarea
-                      class="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1"
-                      name="comment"
-                      placeholder=""></textarea>
+                      {{form.title.label}}
+                      {{form.title }}
+                    <label for="comment" class="text-lg text-gray-600">{{form.content.label}}</label>
+                    {{form.content }}
                   </div>
                   <div>
                     {% if user.is_authenticated %}
@@ -211,6 +208,9 @@
               </div>
             </div>
           
+          {% comment %} Reviews start {% endcomment %}
+         
+
           {% comment %} <div>
             <ul class="flex flex-wrap mb-16 border-b-2">
               <li class="w-1/2 md:w-auto"><a class="inline-block py-6 px-10 bg-white text-gray-500 font-bold font-heading shadow-2xl" href="#">Description</a></li>
@@ -224,6 +224,14 @@
         </div>
       </section>
 
+       
+      {% for review in product.productreview_set.all %}
+          title:{{review.title}} <br>
+
+          content: {{review.content}} <br>
+          user: {{review.user}} <br>
+          Created at: {{review.created_at}} <br>
+      {% endfor %}
     </div>
 
 
