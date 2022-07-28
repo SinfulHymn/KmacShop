@@ -12,4 +12,5 @@ urlpatterns = [
     path('categories/<slug:category_slug>/', views.category_index, name='catergory_index'),
     # category product detail page
     path('categories/<slug:category_slug>/products/<slug:product_slug>/', views.category_products, name='category_products'),
+    path('products/<slug:slug>/add_review/', views.add_review, name='add_review'),
 ]

@@ -3,7 +3,7 @@
   <a href="https://github.com/Kmachappy/Runners-Page">
     <img src="https://i.imgur.com/jdjcdMZ.jpg" alt="Logo" width="250" height="150">
   </a>
-  <a href="https://github.com/Kmachappy/Runners-Page">
+  <a href="https://kmacshop.herokuapp.com/">
     <h3 align="center">KmacShop</h3>
   </a>
 
@@ -11,7 +11,7 @@
     An Ecommerce Web App based around Keyboards <br/>
     Keyboards are more than just putting parts together.
  <p>A Django Ecommerce Web App</p><br />
-    <a href="https://github.com/Kmachappy/Runners-Page"><strong>Live Website - KmacShop </strong></a>
+    <a href="https://kmacshop.herokuapp.com/"><strong>Live Website - KmacShop </strong></a>
     <br />
  Ecommerce Web Application built on <br/>
     <a href="https://www.djangoproject.com/">Django</a>
@@ -40,25 +40,12 @@ Index/Home             |  Category/Filtered
 
 Product Show             |   ERD still missing models
 :-------------------------:|:-------------------------:
-![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/OWwkITK.png)
-Cart             |  Checkout
-:-------------------------:|:-------------------------:
+![](https://i.imgur.com/253u25t.png)  |  ![](https://i.imgur.com/qnuVm55.png)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-# Functionality
 
-- In this app we will access a database of products and display them on the index page
-- User will Be able to view a directory of products and browse any for full information
-- User will be able to add items to their cart session
-- User will be able to update their items in the cart summary
-- User will be able to delete their items in the cart summary
-- User will be able to sign up or log in
-- if user is logged in they can
-
-        - can view products 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 # Routes
 
@@ -116,7 +103,57 @@ class Category(models.Model):
     name = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, unique=True)
 ```
+
+Order Model:
+```
+class Order(models.Model):
+    order_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    items = models.ManyToManyField(Product)
+    ordered_date = models.DateTimeField(auto_now_add=True)
+    ordered_date_updated = models.DateTimeField(auto_now=True)
+    ordered_by = models.CharField(max_length=50)
+    ordered_address = models.CharField(max_length=100)
+    ordered_city = models.CharField(max_length=50)
+    ordered_state = models.CharField(max_length=50)
+    ordered_zip = models.CharField(max_length=10)
+    ordered_phone = models.CharField(max_length=10)
+    ordered_email = models.EmailField()
+    ordered_total = models.DecimalField(max_digits=10, decimal_places=2)
+    ordered_status = models.CharField(max_length=50)
+```
+
+ProductReview Model:
+```
+class ProductReview(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    rating = models.IntegerField(default=0)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+    
+```
+
+
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+# Functionality
+
+- In this app we will access a database of products and display them on the index page
+- User will Be able to view a directory of products and browse any for full information
+- User will be able to add items to their cart session
+- User will be able to update their items in the cart summary
+- User will be able to delete their items in the cart summary
+- User will be able to sign up or log in
+- if user is logged in they can
+
+        - can view products 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 # Current State
 
 - User is currently able to visit the site and see a directory of products

@@ -17,7 +17,7 @@
       </div>
      <section class="">
         <div class="container mx-auto px-4">
-          <div class="flex flex-wrap -mx-4 mb-24">
+          <div class="flex flex-wrap -mx-4 mb-12">
             <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
               <div class="relative mb-6" style="height: 564px;">
                 <a class="absolute top-1/2 left-0 ml-8 transform translate-1/2" href="#">
@@ -70,6 +70,7 @@
                     <span>${{product.price}}</span>
                     {% comment %} <span class="font-normal text-base text-gray-400 line-through">$33.69</span> {% endcomment %}
                   </p>
+                  
                   
                   <p class="max-w-md text-gray-500">{{product.description}}</p>
                 </div>
@@ -130,6 +131,86 @@
               </div>
             </div>
           </div>
+          
+          <div>
+            <a href="{{product.category.get_absolute_url}}">
+              <p class="text-2xl font-semibold text-gray-600">More {{product.category}}</p>
+            </a>
+          </div>
+          {% comment %} Grid start {% endcomment %}
+          <div class="my-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
+            {% for p in product.category.get_products %}
+            
+            {% comment %} ~~~~CARD START~~~~ {% endcomment %}
+            <div class=" p-2 md:p-4 lg:p-5 bg-white ">
+              {% comment %} container for the whole inner {% endcomment %}
+              <div class="product-container-inner flex flex-col grow relative">
+                {% comment %} container for the image margin bottom and min height{% endcomment %}
+                  <div class="image-container mb-4 w-full relative">
+                    {% comment %} href for the product being the image {% endcomment %}
+                    <a class="block" href="{{p.get_absolute_url}}">
+                      <img class="pt-0 w-full h-full" src="{{p.productimage_set.all.0 }}" alt="{{p.image}}"> 
+                    </a>
+                  </div>
+                  
+                {% comment %} container for the product name and price {% endcomment %}
+                <div class="flex flex-col justify-between">
+                  <a href="{{p.get_absolute_url}}" class="block text-slate-600 font-normal font-sans    text-base xs:text-lg pt-0.5 mb-1">{{p.name}}</a>
+                  </a>
+                  <div class="mt-2">
+                    <span class="font-semibold font-sans text-xl text-gray-600">${{p.price}}</span>
+                  </div>
+                </div>
+                  
+                </div>
+                {% endfor %}
+              </div>
+              {% comment %} ~~~~CARD END~~~~ {% endcomment %}
+
+            </div>
+            {% comment %} Grid end {% endcomment %}
+         
+            
+            <div class="container">
+              <div class="w-full rounded-lg shadow-md shadow-slate-600/50">
+                <form action="" class="w-full p-4">
+                  <label for="review-form">Add a Review</label>
+                  <div id="review-form" class="mb-2">
+                    
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+                      title
+                    <input type="text" name="title" class="block w-full px-4 py-2 rounded-lg border border-gray-300 placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" placeholder="title">
+                    <label for="comment" class="text-lg text-gray-600">Body</label>
+                    <textarea
+                      class="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1"
+                      name="comment"
+                      placeholder=""></textarea>
+                  </div>
+                  <div>
+                    {% if user.is_authenticated %}
+                    
+                    <button type="submit" class="bg-slate-600 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-lg">
+                      Submit
+                    </button>
+                    
+                    <button
+                      class="bg-slate-600 hover:bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">
+                      Cancel
+                    </button>
+                    {% else %}
+                   
+
+                      <a href="{% url 'main_app_account:login'%}"  class=" px-3 py-2 text-sm text-blue-100 bg-red-600 rounded">
+                        Log In To Review
+                      </a>
+                    
+                    {% endif %}
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          
           {% comment %} <div>
             <ul class="flex flex-wrap mb-16 border-b-2">
               <li class="w-1/2 md:w-auto"><a class="inline-block py-6 px-10 bg-white text-gray-500 font-bold font-heading shadow-2xl" href="#">Description</a></li>
