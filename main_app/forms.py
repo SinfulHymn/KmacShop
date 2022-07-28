@@ -1,4 +1,3 @@
-from construct import max_
 from django import forms
 from .models import ProductReview
 from django.contrib.auth.forms import (AuthenticationForm, PasswordResetForm,SetPasswordForm)
