@@ -24,6 +24,12 @@ class ProductAdmin(admin.ModelAdmin):
     # prepopulated_fields is used to automatically fill in the slug field
     prepopulated_fields = {'slug': ('name',)}
 
-admin.site.register(ProductImage)
+@admin.register(ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    list_display = ['product', 'url']
+    list_filter = ['product']
+    list_editable = ['url']
+    prepopulated_fields = {'url': ('url',)}
+
 admin.site.register(ProductReview)
 admin.site.register(Order)
