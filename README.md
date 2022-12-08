@@ -3,7 +3,7 @@
   <a href="https://github.com/Kmachappy/Runners-Page">
     <img src="https://i.imgur.com/jdjcdMZ.jpg" alt="Logo" width="250" height="150">
   </a>
-  <a href="https://kmacshop.herokuapp.com/">
+  <a href="https://kmacshop.kmachost.com/">
     <h3 align="center">KmacShop</h3>
   </a>
 
@@ -11,7 +11,7 @@
     An Ecommerce Web App based around Keyboards <br/>
     Keyboards are more than just putting parts together.
  <p>A Django Ecommerce Web App</p><br />
-    <a href="https://kmacshop.herokuapp.com/"><strong>Live Website - KmacShop </strong></a>
+    <a href="https://kmacshop.kmachost.com/"><strong>Live Website - KmacShop </strong></a>
     <br />
  Ecommerce Web Application built on <br/>
     <a href="https://www.djangoproject.com/">Django</a>

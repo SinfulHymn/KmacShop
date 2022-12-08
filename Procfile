@@ -1,1 +1,2 @@
-web: gunicorn kmachappy.wsgi --timeout 120 --threads=2
+web: gunicorn kmachappy.wsgi
+worker: python manage.py runworker
