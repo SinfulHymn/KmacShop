@@ -1,2 +1,1 @@
-web: gunicorn kmachappy.wsgi
-worker: python manage.py runworker
+web: gunicorn <app-name>.wsgi --timeout 60
