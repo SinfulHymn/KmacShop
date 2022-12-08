@@ -1,1 +1,1 @@
-web: daphne -b 0.0.0.0 -p $PORT <app-name>.asgi:application
+web: daphne -b 0.0.0.0 -p $PORT kmachappy.asgi:application
