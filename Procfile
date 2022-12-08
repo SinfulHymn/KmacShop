@@ -1,1 +1,1 @@
-web: gunicorn <app-name>.wsgi --timeout 60
+web: daphne -b 0.0.0.0 -p $PORT <app-name>.asgi:application
