@@ -1,2 +1,3 @@
-web: gunicorn kmacshop.wsgi:application
-release: python manage.py migrate --noinput
+web: gunicorn kmachappy.wsgi:application
+
+release: django-admin migrate --no-input && django-admin collectstatic --no-input
