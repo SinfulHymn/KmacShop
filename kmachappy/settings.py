@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'kmachappy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'kmacshop_ecommerce',
+        'NAME': 'kmacshop',
     }
 }
 
