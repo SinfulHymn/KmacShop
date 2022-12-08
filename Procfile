@@ -1,2 +1,2 @@
-web: gunicorn -chdir kmachappy kmacshop.wsgi:application --bind
+web: gunicorn kmacshop.wsgi:application
 release: python manage.py migrate --noinput
