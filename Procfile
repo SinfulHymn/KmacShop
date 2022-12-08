@@ -1,1 +1,1 @@
-web: gunicorn -chdir kmacshop kmachappy.wsgi
+web: gunicorn -chdir kmachappy kmachappy.wsgi

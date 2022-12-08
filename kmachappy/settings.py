@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-0c=i5vhm4nurr00y(qyqr1^q6i4f%ap=x9j4o(fzctzzb9hmvz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "kmacshop.com"]
 
 
 
